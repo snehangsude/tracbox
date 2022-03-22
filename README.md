@@ -2,7 +2,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/snehangsude/tracbox?color=lightblue&style=for-the-badge)
 ![GitHub issues](https://img.shields.io/github/issues-raw/snehangsude/tracbox?color=crimson&style=for-the-badge)
 ![Twitter Follow](https://img.shields.io/twitter/follow/_Perceptron_?color=teal&style=for-the-badge)
-![Api](https://img.shields.io/badge/API-Pixela-bisque?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/snehangsude/tracbox?color=bisque&style=for-the-badge)
 
 # TracBox
 TracBox - A GUI built on top of Pixela API
