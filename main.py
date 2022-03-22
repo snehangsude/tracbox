@@ -116,7 +116,8 @@ def login():
                     "agreeTermsOfService": "yes",
                     "notMinor": "yes"
                     }    
-                requests.post(CREATE_USER, json=create_user)
+                response = requests.post(CREATE_USER, json=create_user)
+                print('CREEEEEEEEEEEEEEEEEEEEEAYYYEEEE:', response.text)
                 return redirect(url_for('profile'))
             else:
                 flash("Invalid password, please try again!")
@@ -155,8 +156,6 @@ def profile():
         response = requests.post(url=f'https://pixe.la/v1/users/{name}/graphs', json=params, headers=headers)
         msg = response.text
         print('ERRRRRRRRRRRRORRRRRRRRRRRRRRRRRRRR:', msg)
-        print('USERNAAAAAAEMEEEEE:', name)
-        print(params)
 #         if msg.get('isSuccess'):
 #             flash("Graph has been created sucessfully. Use 'View Graph' to view it!")
 #         else:
