@@ -158,12 +158,11 @@ def profile():
         }
         
         response = requests.post(url=f'https://pixe.la/v1/users/{name}/graphs', json=params, headers=headers)
-        msg = response.text
-        print('ERRRRRRRRRRRRORRRRRRRRRRRRRRRRRRRR:', msg)
-#         if msg.get('isSuccess'):
-#             flash("Graph has been created sucessfully. Use 'View Graph' to view it!")
-#         else:
-#             flash(f"{msg.get('message')}")
+        msg = response.json()
+        if msg.get('isSuccess'):
+            flash("Graph has been created sucessfully. Use 'View Graph' to view it!")
+        else:
+            flash(f"{msg.get('message')}")
         return render_template('profile.html', form1=form1, form2=form2, name=name)
 
     # View Graph
