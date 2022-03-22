@@ -6,7 +6,6 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from wtforms import StringField, BooleanField, PasswordField, RadioField, DateField, FloatField
 from wtforms.validators import URL, Length, InputRequired
 from werkzeug.security import generate_password_hash, check_password_hash
-from yourapplication import db
 import requests
 import os
 from graph import Plot
