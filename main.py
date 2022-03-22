@@ -18,6 +18,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 Bootstrap(app)
 db = SQLAlchemy(app)
+db.create_all()
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -29,7 +31,6 @@ class Users(UserMixin, db.Model):
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
     
-db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
