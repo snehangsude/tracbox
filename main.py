@@ -117,8 +117,12 @@ def login():
                     "notMinor": "yes"
                     }    
                 response = requests.post(CREATE_USER, json=create_user)
-                print('CREEEEEEEEEEEEEEEEEEEEEAYYYEEEE:', response.text)
-                return redirect(url_for('profile'))
+                msg = response.json()
+                if msg.get('isSuccess'):
+                    return redirect(url_for('profile'))
+                else:
+                    flash(f"{msg.get('message')}")
+                    return render_template('login.html', form=form)
             else:
                 flash("Invalid password, please try again!")
                 return render_template('login.html', form=form)
