@@ -21,7 +21,7 @@ h6 {
     color: #535151;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.03rem;
     font-size: smaller;
     opacity: 0.5;
 }
@@ -59,14 +59,6 @@ input {
 
 
 /*---------------------- Classes --------------------------*/
-
-.bg-img {
-    background-image: linear-gradient(to right, rgba(12, 12, 12, 1), rgb(5, 41, 65));
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-}
 
 .re-direct:hover {
     color: aquamarine;
