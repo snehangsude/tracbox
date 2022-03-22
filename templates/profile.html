@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito&display=swap" rel="stylesheet"> 
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+    <link rel="manifest" href="../static/images/site.webmanifest">
+    <title>TracBox</title>
+</head>
+<body class="bg-img">
+    <div class="parent-div d-flex flex-column container-fluid align-items-center vh-100 pt-2">
+               
+        <div class="child-div py-3 px-2 mb-2">
+            <h1 class="text-center pb-4">Hi, {{ name }}</h1>
+        </div>
+        
+        <!--  Flash messages -->
+        <div class="child-div px-2 mt-3">
+          {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                  {% for message in messages %}
+                      <p class="text-center">{{ message }}</p>
+                  {% endfor %}
+              {% endif %}
+          {% endwith %}
+        </div>
+
+
+        <div class="child-div mt-2 d-flex flex-lg-row flex-column">
+            <!-- Create Graph--> 
+            <div class="card bg-dark p-3 mb-3" style="width: 18rem;">
+                <img src="../static/images/daisy-skribbl-t.png" class="card-img-top bd-dark c-image" alt="">
+                <div class="card-body">
+                  <h5 class="card-text text-light text-center">Create your first graph and start tracking</h5>
+                </div>
+                <p class="text-center"><button type="button" class="btn btn-success text-uppercase" data-bs-toggle="modal" data-bs-target="#Modal1">
+                    Create Graph
+                </button></p>
+            </div>
+            <!-- Edit Profile -->
+
+            <!-- View Graph-->
+            <div class="card bg-dark p-3 mb-3 mx-sm-3" style="width: 18rem;">
+              <img src="../static/images/mushroom-skribbl-t.png" class="card-img-top bd-dark c-image" alt="">
+              <div class="card-body">
+                <h5 class="card-text text-light text-center">Edit / Update / Delete your Graph</h5>
+              </div>
+              <p class="text-center"><button type="button" class="btn btn-success text-uppercase" data-bs-toggle="modal" data-bs-target="#Modal2">
+                  View Graph
+              </button></p>
+            </div>
+            
+            <!-- Create Graph modal -->
+              <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Please help me with a few information</h5>
+                    </div>
+                    <div class="modal-body">
+                      <form method="POST" action="{{ url_for('profile') }}">
+                        {{ form1.csrf_token }}
+                        <div class="px-4 px-sm-5 py-3">
+                            <p>
+                                {{ form1.graph_id.label }}
+                            </p>
+                            {{ form1.graph_id }}
+                        </div>
+                        <div class="px-4 px-sm-5 py-3">
+                            <p>
+                                {{ form1.graph_name.label }}
+                            </p>
+                            {{ form1.graph_name }}
+                        </div>
+                        <div class="px-4 px-sm-5 py-3">
+                          <p>
+                              {{ form1.graph_unit.label }}
+                          </p>
+                          {{ form1.graph_unit }}
+                        </div>
+                        
+                        <div class="px-4 px-sm-5 py-3">
+                          <p> {{ form1.graph_type.label }}<br><br>
+                            {% for subfield in form1.graph_type %}
+                            <tr>
+                                <td>{{ subfield }}</td>
+                                <td>{{ subfield.label }}</td>
+                            </tr>
+                            {% endfor %}
+                          </p>
+                        </div>
+                        
+                        <div class="px-4 px-sm-5 py-3">
+                          <p> {{ form1.graph_color.label }}<br><br>
+                            {% for subfield in form1.graph_color %}
+                            <tr>
+                                <td>{{ subfield }}</td>
+                                <td>{{ subfield.label }}</td>
+                            </tr>
+                            {% endfor %}
+                          </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <p class="">
+                        <input name ="form1" class="btn btn-success text-uppercase" type="submit" value="Create Graph">
+                      </p>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View Graph-->
+              <div class="modal fade" id="Modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Please enter your graph ID</h5>
+                    </div>
+                    <div class="modal-body">
+                      <form method="POST" action="{{ url_for('profile') }}">
+                      {{ form2.csrf_token }}
+                        <div class="px-4 px-sm-5 py-3">
+                          <p>
+                            {{ form2.v_id.label }}
+                          </p>
+                          {{ form2.v_id }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <p class="">
+                        <input name="form2" class="btn btn-success text-uppercase" type="submit" value="View Graph">
+                      </p>
+                    </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        <div class="px-5 py-3 rounded-3">
+            <span>
+                <a class="link-light re-direct" href="{{ url_for('logout') }}">Logout</a>
+            </span>
+        </div>
+
+        <div class="px-5 py-3">
+          <div class="bg-danger p-2 border border-2 rounded-3">
+            <p class="text-center px-3 mt-2">
+              <a class="link-dark re-direct" href="{{ url_for('delete_profile', name=name) }}">Delete Profile</a>
+            </p>
+          </div>
+        </div>
+        
+        <footer class="mt-5">
+            <h6 class="mt-5">© Snehangsu, with help from <a class="link-light re-direct" href="">Pixela</a></h6>
+        </footer>
+        
+    </div>
+
+<script src="https://kit.fontawesome.com/35c7180ef6.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

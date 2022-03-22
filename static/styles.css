@@ -1,0 +1,115 @@
+/*------------------------- Elements -----------------------*/ 
+
+h1 {
+    color: #FFF;
+    font-family: 'Nunito', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    font-weight: bolder;
+    font-size: large;
+}
+
+h5 {
+    font-family: 'Nunito', sans-serif;
+    color: #FFF;
+    letter-spacing: 0.2rem;
+    font-weight: lighter;
+    opacity:0.7;
+}
+
+h6 {
+    color: #535151;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: smaller;
+    opacity: 0.5;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFF;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-weight: lighter;
+    opacity:0.7;
+}
+
+span {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: lighter;
+    opacity:0.7;
+}
+
+i {
+    color: #FFF;
+}
+
+img {
+    max-width: 60%;
+    max-height: auto;
+}
+
+input {
+    width: 100%;
+}
+
+
+
+/*---------------------- Classes --------------------------*/
+
+.bg-img {
+    background-image: url('./images/bg_image.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.re-direct:hover {
+    color: aquamarine;
+    opacity: 0.5;
+}
+
+.attention {
+    background-color: #46af83ec;
+}
+
+.risk {
+    background-color: #c26d13ec;
+}
+
+.dense {
+    color:#2b2b2b !important;
+    font-weight: bold;
+}
+
+.c-image {
+    max-width: 100px;
+    max-height: 70px;
+    height: auto;
+    width: auto;
+    margin-left: 4rem;
+}
+
+/* ----------------------- Ids --------------------------- */
+
+#age {
+    width:auto;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+#remember {
+    width:auto;
+    margin-right: 1rem;
+}
+
+#graph_type-0, #graph_type-1, #graph_color-0, #graph_color-1, #graph_color-2, #graph_color-3, #graph_color-4, #graph_color-5 {
+    width:auto;
+    margin-right: 0.6rem;
+    margin-bottom: 1rem;
+}
+
