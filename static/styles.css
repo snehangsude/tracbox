@@ -61,7 +61,7 @@ input {
 /*---------------------- Classes --------------------------*/
 
 .bg-img {
-    background-image: url('./images/bg_image.jpg');
+    background-image: linear-gradient(to right, rgba(12, 12, 12, 1), rgb(5, 41, 65));
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
