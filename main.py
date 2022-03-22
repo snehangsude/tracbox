@@ -6,6 +6,7 @@ from flask_login import UserMixin, login_user, LoginManager, login_required, cur
 from wtforms import StringField, BooleanField, PasswordField, RadioField, DateField, FloatField
 from wtforms.validators import URL, Length, InputRequired
 from werkzeug.security import generate_password_hash, check_password_hash
+from yourapplication import db
 import requests
 import os
 from graph import Plot
@@ -28,6 +29,8 @@ class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+    
+db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
