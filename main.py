@@ -153,7 +153,8 @@ def profile():
         }
         
         response = requests.post(url=f'{CREATE_USER}/{current_user.username}/graphs', json=params, headers=headers)
-#         msg = response.json()
+        msg = response.text
+        print(msg)
 #         if msg.get('isSuccess'):
 #             flash("Graph has been created sucessfully. Use 'View Graph' to view it!")
 #         else:
