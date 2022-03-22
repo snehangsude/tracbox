@@ -152,7 +152,7 @@ def profile():
             'color' : form1.graph_color.data,
         }
         
-        response = requests.post(url=f'{CREATE_USER}/{current_user.username}/graphs', json=params, headers=headers)
+        response = requests.post(url=f'https://pixe.la/v1/users/{name}/graphs', json=params, headers=headers)
         msg = response.text
         print('ERRRRRRRRRRRRORRRRRRRRRRRRRRRRRRRR:', msg)
         print('USERNAAAAAAEMEEEEE:', token)
