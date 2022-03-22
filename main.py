@@ -56,7 +56,7 @@ class GraphForm(FlaskForm):
     '''
     The form used to Create a Graph in Pixela
     '''
-    graph_id = StringField(label='Graph ID*', validators=[InputRequired(), Length(min=1, max=16)])
+    graph_id = StringField(label='Graph ID* (No spaces/charecters - [A-z,1-16])', validators=[InputRequired(), Length(min=1, max=16)])
     graph_name = StringField(label='Name of the Graph*', validators=[InputRequired()])
     graph_unit = StringField(label='Unit to be measured*', validators=[InputRequired()])
     graph_type = RadioField(label='Value to be Measured*', choices=['int', 'float'], validators=[InputRequired()])
@@ -153,11 +153,11 @@ def profile():
         }
         
         response = requests.post(url=f'{CREATE_USER}/{current_user.username}/graphs', json=params, headers=headers)
-        msg = response.json()
-        if msg.get('isSuccess'):
-            flash("Graph has been created sucessfully. Use 'View Graph' to view it!")
-        else:
-            flash(f"{msg.get('message')}")
+#         msg = response.json()
+#         if msg.get('isSuccess'):
+#             flash("Graph has been created sucessfully. Use 'View Graph' to view it!")
+#         else:
+#             flash(f"{msg.get('message')}")
         return render_template('profile.html', form1=form1, form2=form2, name=name)
 
     # View Graph
