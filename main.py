@@ -167,7 +167,7 @@ def profile():
 
     # View Graph
     if "form2" in request.form and form2.validate_on_submit():
-        return redirect(url_for('graph', graph_id=form2.v_id.data)) 
+        return redirect(url_for('graph', graph_id=form2.v_id.data.lower())) 
     
     return render_template('profile.html', form1=form1, form2=form2, name=name)
 
