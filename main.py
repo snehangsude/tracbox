@@ -40,7 +40,7 @@ class SignUpForm(FlaskForm):
     '''
     The form to Sign-Up for the user in Pixela 
     '''
-    username = StringField(label='Username', validators=[InputRequired()])
+    username = StringField(label='Username(No charecters / spaces - all lowercase)', validators=[InputRequired()])
     password = PasswordField(label='Password', validators=[InputRequired(), Length(min=4)])
     age = BooleanField(label='Yes, I accept the Terms and Conditions & I\'m above age 18.', validators=[InputRequired()])
 
@@ -48,7 +48,7 @@ class LoginForm(FlaskForm):
     '''
     The form to Login to a session in Pixela
     '''
-    username = StringField(label='Username(not email, all lowercase) ', validators=[InputRequired()])
+    username = StringField(label='Username', validators=[InputRequired()])
     password = PasswordField(label='Password', validators=[InputRequired(), Length(min=4)])
     remember = BooleanField(label='Remember me')
 
@@ -56,7 +56,7 @@ class GraphForm(FlaskForm):
     '''
     The form used to Create a Graph in Pixela
     '''
-    graph_id = StringField(label='Graph ID* (No spaces/charecters - [A-z,1-16])', validators=[InputRequired(), Length(min=1, max=16)])
+    graph_id = StringField(label='Graph ID* (No spaces / charecters)', validators=[InputRequired(), Length(min=1, max=16)])
     graph_name = StringField(label='Name of the Graph*', validators=[InputRequired()])
     graph_unit = StringField(label='Unit to be measured*', validators=[InputRequired()])
     graph_type = RadioField(label='Value to be Measured*', choices=['int', 'float'], validators=[InputRequired()])
@@ -150,7 +150,7 @@ def profile():
     if "form1" in request.form and form1.validate_on_submit():
         token = current_user.password
         params = {
-            'id' : form1.graph_id.data,
+            'id' : form1.graph_id.data.lower(),
             'name' : form1.graph_name.data,
             'unit' : form1.graph_unit.data,
             'type' : form1.graph_type.data,
