@@ -105,14 +105,14 @@ def signup():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = Users.query.filter_by(username=form.username.data).first()
+        user = Users.query.filter_by(username=form.username.data.lower()).first()
         if user:
             if check_password_hash(user.password, form.password.data):
                 login_user(user, remember=form.remember.data)
                 
                 create_user = {
                     "token": current_user.password,
-                    "username": current_user.username,
+                    "username": current_user.username.lower(),
                     "agreeTermsOfService": "yes",
                     "notMinor": "yes"
                     }    
