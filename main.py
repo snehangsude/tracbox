@@ -40,7 +40,7 @@ class SignUpForm(FlaskForm):
     '''
     The form to Sign-Up for the user in Pixela 
     '''
-    username = StringField(label='Username(No charecters / spaces - all lowercase)', validators=[InputRequired()])
+    username = StringField(label='Username(No characters / spaces)', validators=[InputRequired()])
     password = PasswordField(label='Password', validators=[InputRequired(), Length(min=4)])
     age = BooleanField(label='Yes, I accept the Terms and Conditions & I\'m above age 18.', validators=[InputRequired()])
 
