@@ -54,3 +54,12 @@ And as the saying goees - "If you can measure it, you can control it!"
 5. I'm a Patreon supporter for Pixela - why can't I use the special features?
 > The website is created with the basic and the most important API calls. While it's great that you are supporting Pixela, it's yet to be integrated with
 > the special features. Stay tuned for future updates!
+
+6. I have generated a pixel but why can't I see it on the graph?
+> If you have already refreshed the page and donot see it, it's cause the Pixela API puts a mark in comparison to other points. **Eg**: Say I have two dots with integer value `10` and `1`. You would initailly not be able to see a darker shade for 10 unless 1 is available as it compares value when plotting it.
+
+
+## Good to know points
+
+- Due to ease of access all forms take uppercase, camelcase and lowercase however the data is stored in lowercase
+- `SignUp` form registers the account on TracBox's database but the `Login` form is used to actually register in the Pixela databas
