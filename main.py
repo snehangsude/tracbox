@@ -48,7 +48,7 @@ class LoginForm(FlaskForm):
     '''
     The form to Login to a session in Pixela
     '''
-    username = StringField(label='Username', validators=[InputRequired()])
+    username = StringField(label='Username(not email, all lowercase) ', validators=[InputRequired()])
     password = PasswordField(label='Password', validators=[InputRequired(), Length(min=4)])
     remember = BooleanField(label='Remember me')
 
@@ -93,7 +93,7 @@ def signup():
     form = SignUpForm()
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data, method='pbkdf2:sha256')
-        new_user = Users(username=form.username.data, password=hashed_password)
+        new_user = Users(username=form.username.data.lower(), password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
 
