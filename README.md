@@ -62,4 +62,3 @@ And as the saying goees - "If you can measure it, you can control it!"
 ## Good to know points
 
 - Due to ease of access all forms take uppercase, camelcase and lowercase however the data is stored in lowercase
-- `SignUp` form registers the account on TracBox's database but the `Login` form is used to actually register in the Pixela databas
