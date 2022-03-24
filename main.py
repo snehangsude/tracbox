@@ -94,6 +94,19 @@ def signup():
     if form.validate_on_submit():
         hashed_password = generate_password_hash(form.password.data, method='pbkdf2:sha256')
         new_user = Users(username=form.username.data.lower(), password=hashed_password)
+        create_user = {
+                    "token": hashed_password,
+                    "username": form.username.data.lower(),
+                    "agreeTermsOfService": "yes",
+                    "notMinor": "yes"
+                    }    
+                response = requests.post(CREATE_USER, json=create_user)
+                msg = response.json()
+                if msg.get('isSuccess'):
+                    return redirect(url_for('login'))
+                else:
+                    flash(f"{msg.get('message')}")
+                    return render_template('signup.html', form=form)
         db.session.add(new_user)
         db.session.commit()
 
@@ -109,20 +122,20 @@ def login():
         if user:
             if check_password_hash(user.password, form.password.data):
                 login_user(user, remember=form.remember.data)
-                
-                create_user = {
-                    "token": current_user.password,
-                    "username": current_user.username.lower(),
-                    "agreeTermsOfService": "yes",
-                    "notMinor": "yes"
-                    }    
-                response = requests.post(CREATE_USER, json=create_user)
-                msg = response.json()
-                if msg.get('isSuccess'):
-                    return redirect(url_for('profile'))
-                else:
-                    flash(f"{msg.get('message')}")
-                    return render_template('login.html', form=form)
+                return redirect(url_for('profile'))
+#                 create_user = {
+#                     "token": current_user.password,
+#                     "username": current_user.username.lower(),
+#                     "agreeTermsOfService": "yes",
+#                     "notMinor": "yes"
+#                     }    
+#                 response = requests.post(CREATE_USER, json=create_user)
+#                 msg = response.json()
+#                 if msg.get('isSuccess'):
+                  
+#                 else:
+#                     flash(f"{msg.get('message')}")
+#                     return render_template('login.html', form=form)
             else:
                 flash("Invalid password, please try again!")
                 return render_template('login.html', form=form)
