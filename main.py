@@ -100,15 +100,16 @@ def signup():
                     "agreeTermsOfService": "yes",
                     "notMinor": "yes"
                     }    
-                response = requests.post(CREATE_USER, json=create_user)
-                msg = response.json()
-                if msg.get('isSuccess'):
-                    return redirect(url_for('login'))
-                else:
-                    flash(f"{msg.get('message')}")
-                    return render_template('signup.html', form=form)
-        db.session.add(new_user)
-        db.session.commit()
+        response = requests.post(CREATE_USER, json=create_user)
+        msg = response.json()
+        if msg.get('isSuccess'):
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect(url_for('login'))
+        else:
+            flash(f"{msg.get('message')}")
+            return render_template('signup.html', form=form)
+        
 
         flash("Welcome, succesfully registered! Please, Login below.")
         return redirect (url_for('login'))
