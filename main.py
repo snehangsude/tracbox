@@ -105,14 +105,11 @@ def signup():
         if msg.get('isSuccess'):
             db.session.add(new_user)
             db.session.commit()
+            flash("Welcome, succesfully registered! Please, Login below.")
             return redirect(url_for('login'))
         else:
             flash(f"{msg.get('message')}")
             return render_template('signup.html', form=form)
-        
-
-        flash("Welcome, succesfully registered! Please, Login below.")
-        return redirect (url_for('login'))
     return render_template('signup.html', form=form)
 
 @app.route("/login/", methods=['GET', 'POST'])
@@ -124,19 +121,6 @@ def login():
             if check_password_hash(user.password, form.password.data):
                 login_user(user, remember=form.remember.data)
                 return redirect(url_for('profile'))
-#                 create_user = {
-#                     "token": current_user.password,
-#                     "username": current_user.username.lower(),
-#                     "agreeTermsOfService": "yes",
-#                     "notMinor": "yes"
-#                     }    
-#                 response = requests.post(CREATE_USER, json=create_user)
-#                 msg = response.json()
-#                 if msg.get('isSuccess'):
-                  
-#                 else:
-#                     flash(f"{msg.get('message')}")
-#                     return render_template('login.html', form=form)
             else:
                 flash("Invalid password, please try again!")
                 return render_template('login.html', form=form)
