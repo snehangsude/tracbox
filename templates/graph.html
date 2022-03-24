@@ -21,9 +21,9 @@
         <div class="child-div py-5 px-2 mb-2">
             <h1 class="text-center pb-4">Graph: {{ plot.name }}</h1>
             <p class="mx-sm-5 mx-2">
-                {% autoescape false %}
-                {{ image }}
-                {% endautoescape %}
+                
+                {{ image|safe }}
+                
             </p>
         </div>
 
