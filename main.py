@@ -59,7 +59,7 @@ class GraphForm(FlaskForm):
     graph_id = StringField(label='Graph ID* (Not accepted: Only numbers/ spaces/ special charecters)', validators=[InputRequired(), Length(min=1, max=16)])
     graph_name = StringField(label='Name of the Graph*', validators=[InputRequired()])
     graph_unit = StringField(label='Unit to be measured* (eg: Time, Day, Hour)', validators=[InputRequired()])
-    graph_type = RadioField(label='Value to be Measured*', choices=['Integer', 'Decimal'], validators=[InputRequired()])
+    graph_type = RadioField(label='Value to be Measured*', choices=[('int','Integer'), ('float','Decimal')], validators=[InputRequired()])
     graph_color = RadioField(label='Color of the Graph*', 
     choices=[('shibafu', 'Green'), ('momiji','Red'), ('sora','Blue'), ('ichou','Yellow'), ('ajisai','Purple'), ('kuro','Black')])
 
