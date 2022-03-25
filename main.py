@@ -56,10 +56,10 @@ class GraphForm(FlaskForm):
     '''
     The form used to Create a Graph in Pixela
     '''
-    graph_id = StringField(label='Graph ID* (No spaces / charecters)', validators=[InputRequired(), Length(min=1, max=16)])
+    graph_id = StringField(label='Graph ID* (Not accepted: Only numbers/ spaces/ special charecters)', validators=[InputRequired(), Length(min=1, max=16)])
     graph_name = StringField(label='Name of the Graph*', validators=[InputRequired()])
-    graph_unit = StringField(label='Unit to be measured*', validators=[InputRequired()])
-    graph_type = RadioField(label='Value to be Measured*', choices=['int', 'float'], validators=[InputRequired()])
+    graph_unit = StringField(label='Unit to be measured* (eg: Time, Day, Hour)', validators=[InputRequired()])
+    graph_type = RadioField(label='Value to be Measured*', choices=['Integer', 'Decimal'], validators=[InputRequired()])
     graph_color = RadioField(label='Color of the Graph*', 
     choices=[('shibafu', 'Green'), ('momiji','Red'), ('sora','Blue'), ('ichou','Yellow'), ('ajisai','Purple'), ('kuro','Black')])
 
@@ -74,7 +74,7 @@ class AddPixel(FlaskForm):
     Form used to add a pixel to the graph
     """
     date = DateField(label='Date - to add/update the pixel', validators=[InputRequired()])
-    quantity = FloatField(label='Quantity', validators=[InputRequired()],)
+    quantity = FloatField(label='Quantity - value of the single pixel', validators=[InputRequired()],)
 
 class DelPixel(FlaskForm):
     """
